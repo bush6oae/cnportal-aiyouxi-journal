@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>爱游戏 · 轻量导航站 | 收藏与持续关注</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans SC", sans-serif;
+      line-height: 1.6;
+      color: #1e1e2a;
+      background: #f8f9fd;
+    }
+
+    a {
+      color: #2867b2;
+      text-decoration: none;
+      transition: color 0.2s, border-bottom 0.2s;
+      border-bottom: 1px solid transparent;
+    }
+
+    a:hover {
+      color: #1d4f8b;
+      border-bottom-color: #2867b2;
+    }
+
+    /* 深色头图 */
+    .hero {
+      background: linear-gradient(145deg, #0d1b2a 0%, #1b2d44 100%);
+      color: #e8edf3;
+      padding: 3.5rem 1.5rem 3rem;
+      text-align: center;
+      position: relative;
+    }
+
+    .hero h1 {
+      font-size: 2.4rem;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      margin-bottom: 1rem;
+    }
+
+    .hero .sub {
+      font-size: 1.05rem;
+      max-width: 600px;
+      margin: 0 auto 1.2rem;
+      opacity: 0.85;
+      line-height: 1.5;
+    }
+
+    .hero .meta-line {
+      font-size: 0.9rem;
+      opacity: 0.6;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding-top: 1rem;
+      margin-top: 1.2rem;
+    }
+
+    /* 窄导航模拟 */
+    .top-nav {
+      display: flex;
+      justify-content: center;
+      gap: 2.2rem;
+      padding: 0.8rem 1rem;
+      background: #eef1f7;
+      border-bottom: 1px solid #dce1ec;
+      font-size: 0.92rem;
+      flex-wrap: wrap;
+    }
+
+    .top-nav a {
+      color: #2c3e50;
+      font-weight: 500;
+      border: none;
+      padding: 0.2rem 0;
+    }
+
+    .top-nav a:hover {
+      color: #2867b2;
+      border-bottom: 1px solid #2867b2;
+    }
+
+    .container {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 2.2rem 1.2rem 3rem;
+    }
+
+    /* 介绍区 */
+    .intro-box {
+      background: #fff;
+      border-radius: 18px;
+      padding: 1.8rem 2.2rem;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.04);
+      margin-bottom: 2.8rem;
+    }
+
+    .intro-box h2 {
+      font-size: 1.4rem;
+      font-weight: 500;
+      color: #0b1e33;
+      margin-bottom: 0.6rem;
+    }
+
+    .intro-box p {
+      margin-bottom: 0.6rem;
+      color: #2b3340;
+    }
+
+    .intro-box strong {
+      color: #1d3e6b;
+    }
+
+    /* 三场景卡片 */
+    .scene-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.8rem;
+      margin-bottom: 2.8rem;
+    }
+
+    .scene-card {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 1.6rem 1.6rem 1.8rem;
+      box-shadow: 0 5px 18px rgba(0,0,0,0.04);
+      transition: transform 0.2s, box-shadow 0.25s;
+      border: 1px solid #eef2f8;
+    }
+
+    .scene-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 28px rgba(0,0,0,0.06);
+    }
+
+    .scene-card h3 {
+      font-size: 1.2rem;
+      font-weight: 500;
+      color: #0a1f33;
+      margin-bottom: 0.5rem;
+      letter-spacing: 0.01em;
+    }
+
+    .scene-card p {
+      font-size: 0.94rem;
+      color: #3f4a5b;
+      line-height: 1.5;
+    }
+
+    .scene-card .tag {
+      display: inline-block;
+      background: #e4eaf5;
+      color: #1f3f66;
+      font-size: 0.75rem;
+      padding: 0.15rem 0.6rem;
+      border-radius: 30px;
+      margin-top: 0.7rem;
+    }
+
+    /* 常见说明 (轻faq) */
+    .faq-summary {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 1.4rem 2rem 1.8rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+      margin-bottom: 2.2rem;
+      border: 1px solid #eaeef6;
+    }
+
+    .faq-summary h3 {
+      font-size: 1.2rem;
+      font-weight: 500;
+      color: #0b1e33;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .faq-item {
+      padding: 0.55rem 0;
+      border-bottom: 1px dashed #e3e9f2;
+    }
+
+    .faq-item:last-child {
+      border-bottom: none;
+    }
+
+    .faq-item .q {
+      font-weight: 500;
+      color: #1d3e5c;
+      display: block;
+      margin-bottom: 0.15rem;
+    }
+
+    .faq-item .a {
+      font-size: 0.93rem;
+      color: #435167;
+    }
+
+    .reminder-note {
+      background: #f0f4fe;
+      border-left: 4px solid #2867b2;
+      padding: 1rem 1.5rem;
+      border-radius: 10px;
+      font-size: 0.95rem;
+      color: #1f3147;
+      margin: 2rem 0 0.5rem;
+      line-height: 1.5;
+    }
+
+    .reminder-note a {
+      font-weight: 500;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: #7d889a;
+      padding: 2rem 1rem 1.5rem;
+      border-top: 1px solid #e3e8f0;
+      margin-top: 1.8rem;
+    }
+
+    @media (max-width: 600px) {
+      .hero h1 {
+        font-size: 1.8rem;
+      }
+      .intro-box {
+        padding: 1.2rem 1.2rem;
+      }
+      .scene-grid {
+        gap: 1rem;
+      }
+      .faq-summary {
+        padding: 1rem 1.2rem;
+      }
+      .top-nav {
+        gap: 1.2rem;
+        font-size: 0.85rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 深色头图 hero -->
+  <header class="hero">
+    <h1>爱游戏 · 轻量导航</h1>
+    <div class="sub">再次访问、收藏与持续关注 —— 一个更聚焦的入口</div>
+    <div class="meta-line">简洁 · 专业 · 信息密度</div>
+  </header>
+
+  <!-- 顶部导航 (模拟) -->
+  <nav class="top-nav">
+    <a href="#intro">介绍</a>
+    <a href="#scenes">场景</a>
+    <a href="#faq">说明</a>
+    <a href="#reminder">关注</a>
+  </nav>
+
+  <main class="container">
+
+    <!-- 核心介绍 (自然融入链接) -->
+    <section id="intro" class="intro-box">
+      <h2>再度访问与关注</h2>
+      <p>
+        若你曾通过 <a href="https://cnportal-aiyouxi.com.cn">爱游戏</a> 
+        发现过有趣的内容，或许希望保留一个可靠的返回方式。此页面即为此设计：
+        聚合常用信息，降低再次寻找的成本。无论是收藏至浏览器书签，还是定期回看，
+        都能快速定位到关键区域。
+      </p>
+      <p>
+        <strong>持续关注</strong> 意味着你可以固定这个入口，<a href="https://cnportal-aiyouxi.com.cn">爱游戏</a> 
+        的更新与资源调整将透过本导航保持可见。不需要每次重新搜索，减少冗余步骤。
+      </p>
+    </section>
+
+    <!-- 三个场景模块 (差异化表达) -->
+    <section id="scenes" class="scene-grid">
+      <div class="scene-card">
+        <h3>场景 · 回访</h3>
+        <p>隔段时间返回时，通过已存书签直达。省去输入地址或翻找历史记录的麻烦，尤其适合不定期查看偏好内容。</p>
+        <span class="tag">再次访问</span>
+      </div>
+      <div class="scene-card">
+        <h3>场景 · 收藏</h3>
+        <p>将本页加入浏览器收藏夹或移动端主屏，建立个人快捷入口。配合标签管理，可与其他常用站点并列。</p>
+        <span class="tag">建立入口</span>
+      </div>
+      <div class="scene-card">
+        <h3>场景 · 关注动向</h3>
+        <p>如希望了解 <a href="https://cnportal-aiyouxi.com.cn">爱游戏</a> 的近期变化或新增内容，定期回看本导航即可获得概览，无需订阅复杂通知。</p>
+        <span class="tag">轻量关注</span>
+      </div>
+    </section>
+
+    <!-- 常见说明 (FAQ摘要) -->
+    <section id="faq" class="faq-summary">
+      <h3>常见说明 · 摘要</h3>
+      <div class="faq-item">
+        <span class="q">这个页面与主站的关系？</span>
+        <span class="a">本页为独立导航介绍页，为 <a href="https://cnportal-aiyouxi.com.cn">爱游戏</a> 提供轻量入口说明，不替代主站功能。</span>
+      </div>
+      <div class="faq-item">
+        <span class="q">如何确保链接始终有效？</span>
+        <span class="a">指向 <a href="https://cnportal-aiyouxi.com.cn">爱游戏</a> 的链接使用标准 HTTPS 地址，稳定性由主站保障，本页仅做索引提示。</span>
+      </div>
+      <div class="faq-item">
+        <span class="q">是否收集或存储用户行为？</span>
+        <span class="a">本页为纯静态展示，不包含分析脚本或跟踪器，仅提供信息聚合与导航。</span>
+      </div>
+    </section>
+
+    <!-- 强调关注 / 收藏的提醒模块，内含链接 -->
+    <div id="reminder" class="reminder-note">
+      <strong>提示：</strong> 若你希望保持与 
+      <a href="https://cnportal-aiyouxi.com.cn">爱游戏</a> 的便捷连接，推荐将此页面添加至浏览器书签或移动设备主屏幕。
+      下次需要时，直接从这里开始即可，无需重新搜索。本导航会保持精简，聚焦于再次访问与持续关注。
+    </div>
+
+  </main>
+
+  <footer>
+    <span>爱游戏 · 导航页 &nbsp;|&nbsp; 仅做索引展示</span>
+  </footer>
+
+</body>
+</html>
