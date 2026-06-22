@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>简明指南 · 江南体育</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #fbfbf9;
+      color: #1f2a36;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans SC", system-ui, sans-serif;
+      line-height: 1.7;
+      padding: 2.5rem 1.5rem;
+    }
+
+    .page {
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    /* 标题层级：干净、有呼吸感 */
+    h1 {
+      font-size: 2.2rem;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.35em;
+      color: #1f2a36;
+      line-height: 1.2;
+    }
+
+    .subhead {
+      font-size: 1.05rem;
+      color: #5b6e7c;
+      border-bottom: 1px solid #e8ecee;
+      padding-bottom: 1.2rem;
+      margin-bottom: 2rem;
+    }
+
+    h2 {
+      font-size: 1.35rem;
+      font-weight: 500;
+      margin: 2.2rem 0 0.9rem 0;
+      color: #1f2a36;
+      letter-spacing: -0.01em;
+    }
+
+    h3 {
+      font-size: 1.1rem;
+      font-weight: 500;
+      margin: 1.6rem 0 0.5rem 0;
+      color: #2d3e4b;
+    }
+
+    p {
+      margin-bottom: 1.1rem;
+    }
+
+    /* 卡片与区域分割：极简留白，不依赖背景色块 */
+    .feature-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.2rem 1.8rem;
+      margin: 1.5rem 0 1.2rem 0;
+    }
+
+    .feature-item {
+      border-top: 1px solid #e1e6ea;
+      padding-top: 0.7rem;
+    }
+
+    .feature-item strong {
+      display: block;
+      font-weight: 500;
+      font-size: 1rem;
+      color: #1f2a36;
+      margin-bottom: 0.15rem;
+    }
+
+    .feature-item span {
+      font-size: 0.92rem;
+      color: #4c5e6b;
+    }
+
+    /* 引用式提示块 – 低调、知识感 */
+    .insight {
+      background: #f4f6f7;
+      border-left: 3px solid #8fa6b3;
+      padding: 1rem 1.2rem;
+      margin: 1.8rem 0;
+      border-radius: 0 4px 4px 0;
+      font-size: 0.95rem;
+      color: #1f2a36;
+    }
+
+    .insight strong {
+      font-weight: 500;
+    }
+
+    /* 使用场景列表 – 干净无符号 */
+    .scene-list {
+      list-style: none;
+      margin: 0.6rem 0 0.8rem 0;
+    }
+
+    .scene-list li {
+      margin-bottom: 0.45rem;
+      padding-left: 1.2rem;
+      position: relative;
+      color: #2d3e4b;
+    }
+
+    .scene-list li::before {
+      content: "—";
+      position: absolute;
+      left: 0;
+      color: #8fa6b3;
+    }
+
+    /* faq 摘要 – 紧凑 */
+    .faq-block {
+      margin: 2rem 0 1rem 0;
+    }
+
+    .faq-q {
+      font-weight: 500;
+      margin-top: 1rem;
+      margin-bottom: 0.2rem;
+      color: #1f2a36;
+    }
+
+    .faq-a {
+      color: #3f5463;
+      font-size: 0.95rem;
+      padding-left: 0.6rem;
+      border-left: 1px solid #dce2e6;
+      padding-left: 0.8rem;
+    }
+
+    /* 链接样式：克制但可识别 */
+    a {
+      color: #1f2a36;
+      text-decoration: underline;
+      text-underline-offset: 0.25em;
+      text-decoration-thickness: 1px;
+      text-decoration-color: #b3c4cf;
+      transition: text-decoration-color 0.2s;
+    }
+
+    a:hover {
+      text-decoration-color: #1f2a36;
+    }
+
+    /* 分隔线 – 轻 */
+    .rule {
+      border: 0;
+      border-top: 1px solid #e4e9ec;
+      margin: 2rem 0 1.6rem 0;
+    }
+
+    /* 响应式 */
+    @media (max-width: 480px) {
+      body {
+        padding: 1.8rem 1.2rem;
+      }
+
+      h1 {
+        font-size: 1.7rem;
+      }
+
+      .feature-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+
+      .subhead {
+        font-size: 0.95rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <h1>江南体育 · 简明指南</h1>
+    <div class="subhead">一份关于使用思路与访问建议的备忘</div>
+
+    <p>
+      如果你正在了解「江南体育」这个名称所代表的线上体育服务，不妨先花两分钟梳理它的定位与特点。作为一类聚合体育资讯与数据服务的平台，<a href="https://chinese-jiangnan.com">江南体育</a> 所提供的内容覆盖面较广，从赛事动态到基础数据查询，均有所涉及。下面的摘要和提示或许可以帮助你更快找到适合自己的使用方式。
+    </p>
+
+    <h2>主要特点</h2>
+    <div class="feature-grid">
+      <div class="feature-item">
+        <strong>分类清晰</strong>
+        <span>按赛事、球队、项目划分，减少信息过载</span>
+      </div>
+      <div class="feature-item">
+        <strong>更新节奏稳定</strong>
+        <span>资讯与数据保持日常刷新，时效性在合理范围内</span>
+      </div>
+      <div class="feature-item">
+        <strong>多端适应</strong>
+        <span>响应式布局适配常见屏幕尺寸，移动端阅读体验可接受</span>
+      </div>
+      <div class="feature-item">
+        <strong>内容调性克制</strong>
+        <span>避免夸张标题与推送，信息呈现相对平实</span>
+      </div>
+    </div>
+
+    <h2>使用建议</h2>
+    <p>
+      根据个人习惯，可以从以下两个角度切入：如果你更关注赛程与结果，可以直接浏览综合时间线；若偏好深度阅读，可按联赛或项目筛选专题。建议将常用模块添加到书签，方便日常快速调阅。另外，由于体育信息本身具有强时效性，重要节点前可适当增加查看频率。
+    </p>
+
+    <h3>常见使用场景</h3>
+    <ul class="scene-list">
+      <li>赛前查阅对阵信息与近况数据</li>
+      <li>赛后回顾简讯与统计摘要</li>
+      <li>跟踪特定联赛的积分或排名变动</li>
+      <li>在移动端碎片时间快速浏览最新动态</li>
+    </ul>
+
+    <div class="insight">
+      <strong>提示：</strong> 线上体育信息平台本质是辅助工具，请结合官方渠道或直播源交叉确认关键信息。江南体育 的定位是聚合与呈现，不替代原始赛事数据源。
+    </div>
+
+    <h2>访问说明</h2>
+    <p>
+      直接通过浏览器打开 <a href="https://chinese-jiangnan.com">江南体育</a> 即可使用，无需注册或安装额外程序。界面采用浅色主题，导航层级较浅，首页以卡片形式展示主要内容入口。加载速度受本地网络环境及服务器部署位置影响，建议在稳定的 Wi‑Fi 或移动网络下使用。
+    </p>
+    <p>
+      值得一提的是，该平台没有设置强制弹窗或过度权限索取，从访问体验来看相对干净。如果你对某些栏目是否需要登录才能查看存有疑问，可以在对应页面底部找到简单的功能说明。
+    </p>
+
+    <hr class="rule">
+
+    <h2>FAQ 摘要</h2>
+    <div class="faq-block">
+      <div class="faq-q">问：是否需要付费才能浏览全部内容？</div>
+      <div class="faq-a">大部分资讯与数据板块免费开放，部分深度分析或数据工具可能标注特定标识，具体情况以页面显示为准。</div>
+
+      <div class="faq-q">问：数据来源是哪里？</div>
+      <div class="faq-a">平台整合多个公开数据源与自采信息，在对应页面底部或说明区域可查看到引用标注。建议结合原始来源综合判断。</div>
+
+      <div class="faq-q">问：移动端适配如何？</div>
+      <div class="faq-a">已针对手机屏幕进行布局优化，横竖屏均可正常浏览。若发现排版异常，可尝试刷新或更换浏览器。</div>
+    </div>
+
+    <hr class="rule">
+
+    <p style="font-size:0.88rem; color:#6b7f8e; margin-top:2.2rem;">
+      本文档仅作为功能与使用角度的客观描述，不构成任何推荐或承诺。体育信息存在延迟可能，重要判断请以官方发布为准。
+    </p>
+  </div>
+</body>
+</html>
