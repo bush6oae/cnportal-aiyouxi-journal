@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes">
+    <title>江南体育 · 知识库 · 首页</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f3f8fc;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            color: #153243;
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 20px 16px 60px;
+        }
+
+        .site-wrap {
+            max-width: 1080px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 32px;
+            box-shadow: 0 12px 28px rgba(9, 45, 66, 0.06);
+            padding: 28px 24px 48px;
+        }
+
+        /* 头部标识 + 导航感 */
+        .hero-mini {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 10px 16px;
+            margin-bottom: 36px;
+            border-bottom: 1px solid #daeef5;
+            padding-bottom: 20px;
+        }
+
+        .hero-mini .domain-badge {
+            background: #e4f3f9;
+            padding: 6px 18px;
+            border-radius: 60px;
+            font-size: 0.85rem;
+            letter-spacing: 0.3px;
+            color: #1a6d7c;
+            font-weight: 500;
+        }
+
+        .hero-mini .domain-badge span {
+            background: #1a7c8c;
+            color: #fff;
+            border-radius: 30px;
+            padding: 1px 12px;
+            margin-left: 6px;
+            font-size: 0.7rem;
+        }
+
+        .hero-mini .nav-pills {
+            display: flex;
+            gap: 12px 20px;
+            flex-wrap: wrap;
+            font-size: 0.92rem;
+        }
+
+        .nav-pills a {
+            text-decoration: none;
+            color: #2b7a8a;
+            font-weight: 500;
+            border-bottom: 2px solid transparent;
+            transition: 0.15s;
+        }
+
+        .nav-pills a:hover {
+            border-bottom-color: #3ba0b5;
+        }
+
+        /* 标签 */
+        .section-tag {
+            display: inline-block;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            background: #c6e3ed;
+            padding: 2px 14px;
+            border-radius: 20px;
+            color: #094f5e;
+            margin-bottom: 14px;
+            font-weight: 500;
+        }
+
+        h1 {
+            font-size: 2rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+            margin: 0 0 6px 0;
+        }
+
+        h1 small {
+            font-size: 1rem;
+            font-weight: 400;
+            color: #3d7a89;
+            margin-left: 12px;
+        }
+
+        .subhead {
+            color: #2f5a65;
+            max-width: 640px;
+            margin-bottom: 28px;
+            font-size: 1rem;
+        }
+
+        /* 目录感网格卡片 —— 知识库入口 */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 20px;
+            margin: 32px 0 28px;
+        }
+
+        .card-entry {
+            background: #f9fcff;
+            border-radius: 24px;
+            padding: 20px 18px;
+            border: 1px solid #dcecf3;
+            transition: 0.18s ease;
+            box-shadow: 0 2px 6px rgba(0,50,60,0.02);
+        }
+
+        .card-entry:hover {
+            border-color: #8ecad9;
+            box-shadow: 0 6px 14px rgba(0, 90, 110, 0.06);
+            transform: translateY(-2px);
+        }
+
+        .card-entry .card-icon {
+            font-size: 1.6rem;
+            line-height: 1;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .card-entry h3 {
+            font-size: 1.12rem;
+            font-weight: 600;
+            color: #094f5e;
+            margin-bottom: 6px;
+        }
+
+        .card-entry p {
+            font-size: 0.9rem;
+            color: #235764;
+            opacity: 0.9;
+        }
+
+        .card-entry .meta-tag {
+            display: inline-block;
+            margin-top: 10px;
+            font-size: 0.72rem;
+            background: #e1f0f5;
+            padding: 2px 12px;
+            border-radius: 16px;
+            color: #0b6677;
+        }
+
+        /* 说明区 + 提示区 双栏布局 */
+        .info-hint-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px;
+            margin: 20px 0 28px;
+        }
+
+        .info-panel {
+            flex: 2;
+            min-width: 260px;
+            background: #f1f9fd;
+            border-radius: 20px;
+            padding: 22px 20px;
+        }
+
+        .hint-panel {
+            flex: 1.2;
+            min-width: 200px;
+            background: #e7f5f9;
+            border-radius: 20px;
+            padding: 22px 20px;
+            border-left: 4px solid #309aaf;
+        }
+
+        .info-panel h4, .hint-panel h4 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #115a6a;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .info-panel p, .hint-panel p {
+            font-size: 0.92rem;
+            line-height: 1.6;
+        }
+
+        .info-panel ul {
+            list-style: none;
+            margin-top: 8px;
+        }
+
+        .info-panel li {
+            padding: 4px 0;
+            display: flex;
+            align-items: baseline;
+            gap: 10px;
+        }
+
+        .info-panel li::before {
+            content: "▹";
+            color: #309aaf;
+            font-size: 1rem;
+        }
+
+        /* 相关信息区（FAQ摘要） */
+        .related-faq {
+            margin: 38px 0 20px;
+            background: #f6fbfd;
+            border-radius: 24px;
+            padding: 22px 24px;
+            border: 1px solid #cce3eb;
+        }
+
+        .related-faq h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #094f5e;
+            margin-bottom: 14px;
+        }
+
+        .faq-item {
+            padding: 10px 0;
+            border-bottom: 1px dashed #cfe1e9;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+
+        .faq-item .q {
+            font-weight: 500;
+            color: #1a5f6e;
+        }
+
+        .faq-item .a {
+            font-size: 0.9rem;
+            color: #2a5d69;
+            margin-top: 3px;
+        }
+
+        .faq-item .a a {
+            color: #117888;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            font-weight: 500;
+        }
+
+        /* 链接嵌入句子 */
+        .inline-link {
+            color: #117888;
+            font-weight: 500;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            transition: 0.1s;
+        }
+
+        .inline-link:hover {
+            color: #0b4f5e;
+            background: #e0f2f7;
+            text-decoration: none;
+        }
+
+        .footer-note {
+            margin-top: 44px;
+            padding-top: 18px;
+            border-top: 1px solid #d4e6ed;
+            font-size: 0.82rem;
+            color: #406e7a;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .footer-note .badge-small {
+            background: #d8ebf2;
+            padding: 2px 14px;
+            border-radius: 30px;
+            font-size: 0.7rem;
+        }
+
+        /* 移动端微调 */
+        @media (max-width: 580px) {
+            .site-wrap {
+                padding: 20px 14px 36px;
+                border-radius: 24px;
+            }
+            h1 {
+                font-size: 1.6rem;
+            }
+            .hero-mini {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+            .info-hint-row {
+                flex-direction: column;
+            }
+            .hint-panel {
+                border-left-width: 4px;
+            }
+            .related-faq {
+                padding: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="site-wrap">
+
+    <!-- 顶部：标识与目录导航 -->
+    <div class="hero-mini">
+        <div class="domain-badge">
+            main-jiangnan.com <span>知识库</span>
+        </div>
+        <div class="nav-pills">
+            <a href="#info">说明</a>
+            <a href="#hint">提示</a>
+            <a href="#faq">FAQ</a>
+        </div>
+    </div>
+
+    <!-- 标题与速览 -->
+    <h1>江南体育 <small>知识库入口</small></h1>
+    <div class="subhead">
+        面向快速识别网站用途的目录式导览。汇集主要信息、使用说明与常见问题，帮助用户高效了解平台定位。
+    </div>
+
+    <!-- 网格卡片：关键入口（目录感） -->
+    <div class="card-grid">
+        <div class="card-entry">
+            <span class="card-icon">📋</span>
+            <h3>平台概览</h3>
+            <p>聚焦体育资讯、赛事动态与服务集成。内容围绕体育领域持续更新。</p>
+            <span class="meta-tag">分类索引</span>
+        </div>
+        <div class="card-entry">
+            <span class="card-icon">🧭</span>
+            <h3>功能导引</h3>
+            <p>信息查询、赛事日历、数据参考。模块划分清晰，便于快速定位。</p>
+            <span class="meta-tag">使用路径</span>
+        </div>
+        <div class="card-entry">
+            <span class="card-icon">📌</span>
+            <h3>场景说明</h3>
+            <p>日常浏览、资料查阅、关注体育动态。适合不同熟悉程度的用户。</p>
+            <span class="meta-tag">典型场景</span>
+        </div>
+        <div class="card-entry">
+            <span class="card-icon">📎</span>
+            <h3>更新日志</h3>
+            <p>内容结构与信息布局持续迭代，确保索引的实用性与可读性。</p>
+            <span class="meta-tag">迭代记录</span>
+        </div>
+    </div>
+
+    <!-- 说明区 + 提示区 双栏 -->
+    <div class="info-hint-row" id="info">
+        <div class="info-panel">
+            <h4>📚 说明区 · 网站用途识别</h4>
+            <p>用户可通过以下特征快速判断平台属性：</p>
+            <ul>
+                <li>体育内容聚合，资讯与赛事信息为骨架</li>
+                <li>非商业导向，无直接交易或投注功能</li>
+                <li>信息密度适中，面向对体育感兴趣的普通访客</li>
+                <li>页面结构体现知识库风格，侧重索引与分类</li>
+            </ul>
+            <p style="margin-top: 12px;">如希望直接了解主体内容，可参考由 <a href="https://main-jiangnan.com" class="inline-link">江南体育</a> 提供的页面体系与更新说明。</p>
+        </div>
+        <div class="hint-panel" id="hint">
+            <h4>💡 提示区</h4>
+            <p>• 使用顶部导航可快速跳转至对应区块。<br>
+               • 卡片区域为内容分类入口，指向更详细说明。<br>
+               • 本页面为静态索引，不包含动态加载内容。<br>
+               • 建议通过桌面或平板浏览以获取最佳目录体验。</p>
+        </div>
+    </div>
+
+    <!-- 相关信息区 / FAQ 摘要 -->
+    <div class="related-faq" id="faq">
+        <h4>❓ 相关信息 · 常见疑问摘要</h4>
+        <div class="faq-item">
+            <div class="q">Q: 这个网站提供哪些体育内容？</div>
+            <div class="a">涵盖新闻摘要、赛事动态、背景资料等，以信息整合为主。具体分类可参考卡片区域。</div>
+        </div>
+        <div class="faq-item">
+            <div class="q">Q: 是否需要注册或登录？</div>
+            <div class="a">当前页面及索引部分无需身份验证。部分扩展功能可能需依据平台具体设定。</div>
+        </div>
+        <div class="faq-item">
+            <div class="q">Q: 如何快速了解最新内容？</div>
+            <div class="a">可留意页面更新日志或直接浏览由 <a href="https://main-jiangnan.com">江南体育</a> 发布的主站页面，结构会定期优化。</div>
+        </div>
+        <div class="faq-item">
+            <div class="q">Q: 网站是否为官方机构？</div>
+            <div class="a">本索引为第三方信息整理页，旨在帮助用户理解网站用途。具体权威性请参考主站声明。</div>
+        </div>
+    </div>
+
+    <!-- 底部 -->
+    <div class="footer-note">
+        <span>知识库风格 · 目录布局 · 信息精简</span>
+        <span class="badge-small">索引 v2.0 · 江南体育</span>
+    </div>
+
+</div>
+<!-- 页面结构：完整，无多余内容 -->
+</body>
+</html>
